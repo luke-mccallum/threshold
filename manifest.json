@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Threshold - A New Tab Replacer",
+  "description": "Threshold is a chrome extension that replaces your new tab page with a new, more aesthetic, and convenient layout",
+  "version": "0.1",
+  "author": "Luke McCallum",
+    
+  "action": {
+    "default_icon": {
+      "32": "images/apertureWhite128px.png"
+    }
+  },
+  "icons": {
+    "128": "images/apertureWhite128px.png"
+  },
+
+  "chrome_url_overrides" : {
+    "newtab": "main.html"
+  },
+  "incognito": "split"
+}
