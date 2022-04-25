@@ -1,5 +1,3 @@
-'use strict'
-
 const switcher = document.querySelector('#mode');
 
 switcher.addEventListener('click', function() {
@@ -13,4 +11,16 @@ switcher.addEventListener('click', function() {
     }
 
     console.log("Current Theme: " + this.textContent)
+});
+
+var search = document.getElementById("searchTerm");
+
+search.addEventListener("keypress", function(keyPressed) {
+    if (keyPressed.key === 'Enter') {
+        location.replace("https://www.google.com/search?q=" + search.value + "");
+    }
+});
+
+search.addEventListener("click", function() {
+    search.value = "";
 });
