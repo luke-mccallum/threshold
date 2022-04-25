@@ -1,15 +1,25 @@
+* {
+    background-color: var(--bg);
+    color: var(--fontColor);
+}
+
 body {
-    background-color: #000000;
-    font-family: 'League Gothic', sans-serif;
-    color: #ffffff;
+    font-family: 'League Gothic', sans-serif;   
 }
 
 .mainImage {
-    display: block;
     margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
-    width: 40%;
+    max-width: 40%;
+}
+
+#mainDark {
+    display: var(--darkImage);
+}
+
+#mainLight {
+    display: var(--lightImage);
 }
 
 table {
@@ -29,10 +39,30 @@ td {
 }
 
 a {
-    color: #ffffff;
     text-decoration: none;
+    color: var(--fontColor);
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+#mode {
+    position: absolute;
+    bottom: 1%;
+    font-family: monospace;
+}
+
+.dark-mode {
+    --bg: black;
+    --fontColor: white;
+    --darkImage: block;
+    --lightImage: none;
+}
+
+.light-mode {
+    --bg: white;
+    --fontColor: black;
+    --darkImage: none;
+    --lightImage: block;
 }

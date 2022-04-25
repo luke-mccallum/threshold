@@ -4,14 +4,15 @@
     <title>threshold</title>
     <link rel = "icon" type = "image/x-icon" href="images/apertureWhite128px.png">
     <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Gothic:wdth@85&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
 
-  <body>
-    <img src="images/arthurbrown.jpg" class="mainImage">
+  <body class="dark-mode">
+    <img src="images/arthurbrown.jpg" class="mainImage" id="mainDark">
+    <img src="images/invertedarthurbrown.jpg" class="mainImage" id="mainLight">
 
     <table>
       <tr>
@@ -66,5 +67,11 @@
         </td>
       </tr>
     </table>
+
+    <button id = "mode">Light</button>
+
+    <script src="app.js"></script>
+    <noscript>You need to enable JavaScript for full site functionality</noscript>
+
   </body>
 </html>
