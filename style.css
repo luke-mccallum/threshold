@@ -107,6 +107,14 @@ a:hover {
     border-color: var(--fontColor);
 }
 
+#searchTerm::placeholder {
+    color: var(--fontColor);
+}
+
+#searchTerm:focus::placeholder {
+    color: transparent;
+}
+
 
 #mode {
     position: absolute;
