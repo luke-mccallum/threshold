@@ -1,3 +1,5 @@
+'use strict';
+
 const MODE_SWITCH = document.querySelector('#mode');
 MODE_SWITCH.addEventListener('click', function () {
     document.body.classList.toggle('light-mode')
