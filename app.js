@@ -1,5 +1,6 @@
 'use strict';
 
+// Switching between light and dark mode
 const MODE_SWITCH = document.querySelector('#mode');
 MODE_SWITCH.addEventListener('click', function () {
     document.body.classList.toggle('light-mode')
@@ -12,7 +13,7 @@ MODE_SWITCH.addEventListener('click', function () {
     console.log("Current Theme: " + this.textContent)
 });
 
-
+// Google search functionality
 let search = document.getElementById("searchTerm");
 search.addEventListener("keypress", function (keyPressed) {
     if (keyPressed.key === 'Enter') {
@@ -21,7 +22,7 @@ search.addEventListener("keypress", function (keyPressed) {
     }
 });
 
-
+// Date and time
 const BODY = document.querySelector('body');
 BODY.addEventListener('load', startTime());
 function startTime() {
