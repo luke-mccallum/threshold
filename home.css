@@ -115,13 +115,6 @@ a:hover {
     color: transparent;
 }
 
-
-#mode {
-    position: absolute;
-    bottom: 1%;
-    right: 1%;
-}
-
 #version {
     position: absolute;
     bottom: 1%;

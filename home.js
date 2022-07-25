@@ -1,12 +1,12 @@
 'use strict'
 
 // Activating light or dark mode
-mode.addEventListener('click', function () {
+window.onload =  function () {
     chrome.storage.sync.get(['colorMode'], function(response) {
         console.log('Successfully loaded ' + response.colorMode)
         document.body.className = (response.colorMode)
     })
-});
+}
 
 // Google search functionality
 let search = document.getElementById("searchTerm");
