@@ -4,18 +4,20 @@
   "description": "Threshold is a chrome extension that replaces your new tab page with a new, more aesthetically pleasing, and convenient layout",
   "version": "2.1.2",
   "author": "Luke McCallum",
-    
+
   "action": {
     "default_icon": {
-      "32": "images/apertureWhite128px.png"
-    }
+      "128": "images/apertureWhite128px.png"
+    },
+    "default_popup": "popup.html"
   },
   "icons": {
     "128": "images/apertureWhite128px.png"
   },
 
-  "chrome_url_overrides" : {
+  "chrome_url_overrides": {
     "newtab": "home.html"
   },
+
   "incognito": "split"
 }

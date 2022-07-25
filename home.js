@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 // Switching between light and dark mode
 const MODE_SWITCH = document.querySelector('#mode');
