@@ -1,16 +1,11 @@
 'use strict'
 
-// Switching between light and dark mode
-const MODE_SWITCH = document.querySelector('#mode');
-MODE_SWITCH.addEventListener('click', function () {
-    document.body.classList.toggle('light-mode')
-    let className = document.body.className;
-    if (className == "dark-mode") {
-        this.textContent = "Light Mode";
-    } else {
-        this.textContent = "Dark Mode";
-    }
-    console.log("Current Theme: " + this.textContent)
+// Activating light or dark mode
+mode.addEventListener('click', function () {
+    chrome.storage.sync.get(['colorMode'], function(response) {
+        console.log('Successfully loaded ' + response.colorMode)
+        document.body.className = (response.colorMode)
+    })
 });
 
 // Google search functionality

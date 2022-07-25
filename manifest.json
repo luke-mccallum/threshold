@@ -19,5 +19,6 @@
     "newtab": "home.html"
   },
 
-  "incognito": "split"
+  "incognito": "split",
+  "permissions": ["storage"]
 }

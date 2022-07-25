@@ -1,4 +1,7 @@
-changeColor.addEventListener("click", function() {
-    changeColor.classList.toggle('black')
-});
+light.addEventListener("click", function() {
+    chrome.storage.sync.set({colorMode: 'light-mode'})
+})
   
+dark.addEventListener("click", function() {
+    chrome.storage.sync.set({colorMode: 'dark-mode'})
+})

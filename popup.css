@@ -1,7 +1,19 @@
-.white {
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic:wdth@85&family=Source+Code+Pro:wght@200;300&display=swap');
+
+body {
+  display: flex;
+}
+
+button {
+  font-family: 'League Gothic', sans-serif;
+  font-family: 'Source Code Pro', monospace;
+}
+
+#light {
   background-color: aqua;
 }
 
-.black {
+#dark {
   background-color: black;
+  color: white;
 }
