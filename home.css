@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Gothic:wdth@85&family=Source+Code+Pro:wght@200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 .dark-mode {
     --bg: black;
@@ -35,8 +35,7 @@
 * {
     background-color: var(--bg);
     color: var(--fontColor);
-    font-family: 'League Gothic', sans-serif;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Playfair Display', serif;
 }
 
 figure {
@@ -47,7 +46,6 @@ figcaption {
     font-weight: 700;
     font-size: 20px;
     margin-bottom: 5px;
-    text-decoration: underline;
 }
 
 ul {
@@ -62,7 +60,7 @@ a {
 }
 
 a:hover {
-    padding-left: 1%;
+    padding-left: 0.5%;
 }
 
 .details {
@@ -77,9 +75,8 @@ a:hover {
 .mainImage {
     margin-left: auto;
     margin-right: auto;
-    margin-top: -650px;
-    max-width: 45%;
-
+    margin-top: -450px;
+    width: 300px;
 }
 
 #mainDark {
