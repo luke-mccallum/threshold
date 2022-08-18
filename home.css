@@ -59,8 +59,14 @@ a {
     color: var(--fontColor);
 }
 
+@keyframes selection {
+    from {padding-left: 0;}
+    to {padding-left: 0.25%;}
+}
+
 a:hover {
-    padding-left: 0.5%;
+    animation-name: selection;
+    animation-duration: 0.5s;
 }
 
 .details {
