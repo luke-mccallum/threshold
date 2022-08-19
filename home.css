@@ -116,8 +116,9 @@ a:hover {
 
 #version {
     position: absolute;
-    bottom: 1%;
-    left: 1%;
-    color: rgb(117, 117, 117);
+    left: 0;
+    bottom: 0;
+    color: rgb(65, 65, 65);
     font-size: 15px;
+    padding: 5px;
 }
