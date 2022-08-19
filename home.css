@@ -67,6 +67,7 @@ a {
 a:hover {
     animation-name: selection;
     animation-duration: 0.5s;
+    padding-left: 0.25%;
 }
 
 .details {
