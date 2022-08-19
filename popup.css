@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
-body {
+* {
   color: white;
   background-color: black;
   font-family: 'Playfair Display', serif;
@@ -12,15 +12,11 @@ h1 {
 
 .buttons {
   display: flex;
+  flex-direction: column;
+  width: 130px;
 }
 
 #light {
-  background-color: aqua;
-}
-
-#dark {
-  background-color: black;
-  color: white;
-  border: 2px;
-  border-color: white;
+  background-color: white;
+  color: black;
 }
