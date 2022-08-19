@@ -79,10 +79,17 @@ a:hover {
     text-align: right;
 }
 
+.focus {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    top: 25vh;
+    left: 30vw;
+}
+
 .mainImage {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -450px;
     width: 300px;
 }
 
@@ -101,7 +108,7 @@ a:hover {
     margin-left: auto;
     margin-right: auto;
     margin-top: 2%;
-    width: 40%;
+    width: 40vw;
     border-color: var(--bg);
     font-size: 30px;
     height: 40px;
