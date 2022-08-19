@@ -3,8 +3,6 @@
 .dark-mode {
     --bg: black;
     --fontColor: white;
-    --darkImage: block;
-    --lightImage: none;
     --darkLogo: block;
     --lightLogo: none;
 }
@@ -12,8 +10,6 @@
 .light-mode {
     --bg: white;
     --fontColor: black;
-    --darkImage: none;
-    --lightImage: block;
     --darkLogo: none;
     --lightLogo: block;
 }
@@ -89,16 +85,8 @@ a:hover {
     left: 30vw;
 }
 
-.mainImage {
+#mainImage {
     width: 300px;
-}
-
-#mainDark {
-    display: var(--darkImage);
-}
-
-#mainLight {
-    display: var(--lightImage);
 }
 
 #searchTerm {
