@@ -18,6 +18,16 @@
   color: black;
 }
 
+#linkSettings {
+  padding-top: 15px;
+}
+
+#addCategory {
+  background-color: white;
+  color: black;
+  width: 130px;
+}
+
 .dropdown {
   padding-top: 15px;
   position: relative;

@@ -25,14 +25,16 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
     );
     if (key === "colorMode") {
       document.body.className = newValue;
-    }
-    if (key === "centerImage") {
+    } else if (key === "centerImage") {
       if (newValue === "custom") {
         let customLink = prompt("Enter a link to the source of your image/gif");
         chrome.storage.sync.set({ centerImage: customLink });
       } else {
         document.getElementById("mainImage").src = newValue;
       }
+    } else if (key === "addCategory" && newValue === "yes") {
+      newCategory();
+      chrome.storage.sync.set({ addCategory: "no"});
     }
   }
 });
@@ -57,7 +59,9 @@ function startTime() {
 }
 
 // Adding a new category
-function newCategory(name) {
+function newCategory() {
+  let name = prompt("Enter the name for the new category:");
+
   let category = document.createElement("figure");
   category.setAttribute("id", name);
 

@@ -6,6 +6,10 @@ dark.addEventListener("click", function() {
     chrome.storage.sync.set({colorMode: 'dark-mode'})
 })
 
+addCategory.addEventListener("click", function() {
+  chrome.storage.sync.set({addCategory: "yes"})
+})
+
 rei.addEventListener("click", function() {
   chrome.storage.sync.set({centerImage: "images/main/rei.gif"})
 })
