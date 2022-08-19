@@ -9,7 +9,7 @@ window.onload = function () {
       document.body.className = response.colorMode;
     }
     // Loading center image
-    if (response.centerImage != undefined || "custom") {
+    if ((response.centerImage != undefined) && (response.centerImage !="custom")) {
       console.log("Successfully loaded " + response.centerImage);
       document.getElementById("mainImage").src = response.centerImage;
     }
@@ -32,7 +32,7 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
       } else {
         document.getElementById("mainImage").src = newValue;
       }
-    } else if (key === "addCategory" && newValue === "yes") {
+    } else if ((key === "addCategory") && (newValue === "yes")) {
       newCategory();
       chrome.storage.sync.set({ addCategory: "no"});
     }
