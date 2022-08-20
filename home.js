@@ -56,6 +56,8 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
       }
     } else if (key === "addCategory") {
       addCategory(newValue);
+    } else if (key === "removeCategory") {
+      removeCategory(newValue);
     }
   }
 });
@@ -114,8 +116,23 @@ function createLink(name, link) {
 function addCategory(name) {
   chrome.storage.sync.get(["linkData"], function (response) {
     let categories = parse(response.linkData);
-    categories.appendChild(createCategory(name));
+    categories.childNodes[0].appendChild(createCategory(name));
     chrome.storage.sync.set({ linkData: categories.outerHTML });
+  });
+}
+
+// Removing a category from stored values
+function removeCategory(name) {
+  chrome.storage.sync.get(["linkData"], function (response) {
+    let data = parse(response.linkData);
+    let categories = data.childNodes[0].childNodes;
+    for (let i = 0; i < categories.length; i++) {
+      if (categories[i].id === name) {
+        data.childNodes[0].removeChild(categories[i]);
+        break;
+      }
+    }
+    chrome.storage.sync.set({ linkData: data.outerHTML });
   });
 }
 
@@ -188,7 +205,7 @@ function loadDefaultLinks() {
     createLink("w3schools", "https://www.w3schools.com/")
   );
   // Combining into one div
-  let newContents = document.createElement("div")
+  let newContents = document.createElement("div");
   newContents.appendChild(social);
   newContents.appendChild(streaming);
   newContents.appendChild(vidya);

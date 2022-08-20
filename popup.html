@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
     <h1>Settings</h1>
@@ -10,24 +10,28 @@
       <button id="dark">Enable Dark Mode</button>
     </div>
 
-    <div id="addCategoryDropbox">
-      <button id="addCategory">Add a Category</button>
-      <input id="addCategoryInput">
-    </div>
-
     <div class="dropdown">
       <button id="dropbox">Set Center Image</button>
       <div id="dropdown-content">
-        <Button id="rei">Spinning Rei</Button>
-        <Button id="skeleton">Dancing Skeleton</Button>
-        <Button id="frog">Spinning Frog</Button>
-        <Button id="neco">Neco-Arc</Button>
-        <Button id="custom">Custom Source</Button>
+        <button id="rei">Spinning Rei</button>
+        <button id="skeleton">Dancing Skeleton</button>
+        <button id="frog">Spinning Frog</button>
+        <button id="neco">Neco-Arc</button>
+        <button id="custom">Custom Source</button>
       </div>
     </div>
 
+    <div id="addCategoryDropbox">
+      <button id="addCategory">Add a Category</button>
+      <input id="addCategoryInput" placeholder="input name here"/>
+    </div>
+    <div id="removeCategoryDropbox">
+      <button id="removeCategory">Remove Category</button>
+      <input id="removeCategoryInput" placeholder="input name here"/>
+    </div>
+
     <button id="resetButton">Reset to Default</button>
-    
+
     <script src="popup.js"></script>
   </body>
 </html>
