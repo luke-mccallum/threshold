@@ -58,6 +58,8 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
       addCategory(newValue);
     } else if (key === "removeCategory") {
       removeCategory(newValue);
+    } else if (key === "addLink") {
+      addLink(newValue);
     }
   }
 });
@@ -129,6 +131,22 @@ function removeCategory(name) {
     for (let i = 0; i < categories.length; i++) {
       if (categories[i].id === name) {
         data.childNodes[0].removeChild(categories[i]);
+        break;
+      }
+    }
+    chrome.storage.sync.set({ linkData: data.outerHTML });
+  });
+}
+
+// Adding a link to stored values
+function addLink(input) {
+  chrome.storage.sync.get(["linkData"], function (response) {
+    let newLink = createLink(input[0], input[2]);
+    let data = parse(response.linkData);
+    let categories = data.childNodes[0].childNodes;
+    for (let i = 0; i < categories.length; i++) {
+      if (categories[i].id === input[1]) {
+        data.childNodes[0].childNodes[i].childNodes[1].appendChild(newLink);
         break;
       }
     }
