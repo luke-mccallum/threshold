@@ -224,17 +224,6 @@ function loadDefaultLinks() {
   streaming.childNodes[1].appendChild(
     createLink("disney plus", "https://www.disneyplus.com/home")
   );
-  // Initialisng vidya category
-  let vidya = createCategory("vidya");
-  vidya.childNodes[1].appendChild(
-    createLink("steam", "https://store.steampowered.com/")
-  );
-  vidya.childNodes[1].appendChild(
-    createLink("steamdb", "https://steamdb.info/")
-  );
-  vidya.childNodes[1].appendChild(
-    createLink("humble bundle", "https://www.humblebundle.com/")
-  );
   // Initialising coding category
   let coding = createCategory("coding");
   coding.childNodes[1].appendChild(createLink("github", "https://github.com/"));
@@ -251,7 +240,6 @@ function loadDefaultLinks() {
   let newContents = document.createElement("div");
   newContents.appendChild(social);
   newContents.appendChild(streaming);
-  newContents.appendChild(vidya);
   newContents.appendChild(coding);
   // Importing into chrome storage
   chrome.storage.sync.set({ linkData: newContents.outerHTML });
