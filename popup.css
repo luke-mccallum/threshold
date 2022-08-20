@@ -95,6 +95,30 @@ button {
   display: block;
 }
 
+#removeLinkDropbox {
+  position: relative;
+  display: inline-block;
+}
+
+#removeLink {
+  width: 130px;
+}
+
+.removeLinkInputs {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.removeLinkInputs input {
+  display: block;
+  width: 128px;
+}
+
+#removeLinkDropbox:hover .removeLinkInputs {
+  display: block;
+}
+
 .dropdown {
   padding-top: 15px;
   position: relative;

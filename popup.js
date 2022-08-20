@@ -55,6 +55,31 @@ function addLink() {
   }
 }
 
+removeLinkName.addEventListener("keypress", function (keyPressed) {
+  if (keyPressed.key === "Enter") {
+    removeLink();
+  }
+});
+
+removeLinkCategory.addEventListener("keypress", function (keyPressed) {
+  if (keyPressed.key === "Enter") {
+    removeLink();
+  }
+});
+
+function removeLink() {
+  if (
+    removeLinkName.value != "" &&
+    removeLinkCategory.value != ""
+  ) {
+    chrome.storage.sync.set({
+      removeLink: [removeLinkName.value, removeLinkCategory.value],
+    });
+    removeLinkCategory.value = "";
+    removeLinkName.value = "";
+  }
+}
+
 rei.addEventListener("click", function () {
   chrome.storage.sync.set({ centerImage: "images/main/rei.gif" });
 });

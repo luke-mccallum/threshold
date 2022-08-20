@@ -60,6 +60,8 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
       removeCategory(newValue);
     } else if (key === "addLink") {
       addLink(newValue);
+    } else if (key === "removeLink") {
+      removeLink(newValue);
     }
   }
 });
@@ -110,6 +112,7 @@ function createLink(name, link) {
   let linkElement = document.createElement("a");
   linkElement.href = link;
   linkElement.innerHTML = name;
+  listElement.id = name + "Link";
   listElement.appendChild(linkElement);
   return listElement;
 }
@@ -148,6 +151,28 @@ function addLink(input) {
       if (categories[i].id === input[1]) {
         data.childNodes[0].childNodes[i].childNodes[1].appendChild(newLink);
         break;
+      }
+    }
+    chrome.storage.sync.set({ linkData: data.outerHTML });
+  });
+}
+
+// Removing a link from stored values
+function removeLink(input) {
+  chrome.storage.sync.get(["linkData"], function (response) {
+    let data = parse(response.linkData);
+    let categories = data.childNodes[0].childNodes;
+    for (let i = 0; i < categories.length; i++) {
+      if (categories[i].id === input[1]) {
+        let links = categories[i].childNodes[1].childNodes;
+        for (let j = 0; j < links.length; j++) {
+          if (links[j].id === input[0] + "Link") {
+            data.childNodes[0].childNodes[i].childNodes[1].removeChild(
+              links[j]
+            );
+            break;
+          }
+        }
       }
     }
     chrome.storage.sync.set({ linkData: data.outerHTML });
