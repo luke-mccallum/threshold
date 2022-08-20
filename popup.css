@@ -16,6 +16,7 @@ button {
 }
 
 .buttons {
+  margin-top: 15px;
   display: inline-block;
   width: 130px;
 }
@@ -23,6 +24,10 @@ button {
 #light {
   background-color: white;
   color: black;
+}
+
+#dark {
+  background-color: rgb(46, 3, 102);
 }
 
 #addCategoryDropbox {
@@ -47,6 +52,7 @@ button {
 }
 
 #removeCategory {
+  background-color: rgb(46, 3, 102);
   width: 130px;
 }
 
@@ -77,6 +83,7 @@ button {
 
 #removeLinkButton {
   width: 130px;
+  background-color: rgb(46, 3, 102);
 }
 
 #removeLinkDropbox:hover .removeLinkInputs {
@@ -84,7 +91,6 @@ button {
 }
 
 .dropdown {
-  padding-top: 15px;
   position: relative;
   display: inline-block;
 }
@@ -108,7 +114,7 @@ button {
 }
 
 #resetButton {
-  margin-top: 75px;
+  margin-top: 50px;
   background-color: white;
   color: black;
 }
