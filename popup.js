@@ -1,3 +1,23 @@
+dropbox.addEventListener("click", function() {
+  toggleDropdown("imageDropdown");
+})
+
+addCategory.addEventListener("click", function() {
+  toggleDropdown("addCategoryDropdown");
+})
+
+removeCategory.addEventListener("click", function() {
+  toggleDropdown("removeCategoryDropdown");
+})
+
+addLinkButton.addEventListener("click", function() {
+  toggleDropdown("addLinkDropdown");
+})
+
+removeLinkButton.addEventListener("click", function() {
+  toggleDropdown("removeLinkDropdown");
+})
+
 light.addEventListener("click", function () {
   chrome.storage.sync.set({ colorMode: "light-mode" });
 });
@@ -103,3 +123,8 @@ custom.addEventListener("click", function () {
 resetButton.addEventListener("click", function () {
   chrome.storage.sync.remove(["linkData"]);
 });
+
+// Toggle the visibility of a dropdown menu
+function toggleDropdown(id) {
+  document.getElementById(id).classList.toggle("show");
+}

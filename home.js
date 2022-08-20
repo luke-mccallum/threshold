@@ -44,7 +44,9 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
     } else if (key === "centerImage") {
       if (newValue === "custom") {
         let customLink = prompt("Enter a link to the source of your image/gif");
-        chrome.storage.sync.set({ centerImage: customLink });
+        if (customLink != null && customLink != "") {
+          chrome.storage.sync.set({ centerImage: customLink });
+        }
       } else {
         document.getElementById("mainImage").src = newValue;
       }

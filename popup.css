@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
 
 * {
   color: white;
   background-color: black;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   text-align: center;
 }
 
@@ -37,13 +37,6 @@ button {
   width: 130px;
 }
 
-#addCategoryInput {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  width: 128px;
-}
-
 #addCategoryDropbox:hover #addCategoryInput {
   display: block;
 }
@@ -57,13 +50,6 @@ button {
   width: 130px;
 }
 
-#removeCategoryInput {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  width: 128px;
-}
-
 #removeCategoryDropbox:hover #removeCategoryInput {
   display: block;
 }
@@ -74,21 +60,10 @@ button {
   display: inline-block;
 }
 
-#addLink {
+#addLinkButton {
   background-color: white;
   color: black;
   width: 130px;
-}
-
-.addLinkInputs {
-  display: none;
-  position: absolute;
-  z-index: 1;
-}
-
-.addLinkInputs input {
-  display: block;
-  width: 128px;
 }
 
 #addLinkDropbox:hover .addLinkInputs {
@@ -100,19 +75,8 @@ button {
   display: inline-block;
 }
 
-#removeLink {
+#removeLinkButton {
   width: 130px;
-}
-
-.removeLinkInputs {
-  display: none;
-  position: absolute;
-  z-index: 1;
-}
-
-.removeLinkInputs input {
-  display: block;
-  width: 128px;
 }
 
 #removeLinkDropbox:hover .removeLinkInputs {
@@ -131,7 +95,7 @@ button {
   width: 130px;
 }
 
-#dropdown-content {
+.dropdown-content {
   display: none;
   position: absolute;
   box-shadow: 0px 8px 16px 0px rgba(255, 255, 255, 0.301);
@@ -139,12 +103,27 @@ button {
   width: 130px;
 }
 
-.dropdown:hover #dropdown-content {
-  display: block;
+.dropdown-content button:hover {
+  color: blueviolet;
 }
 
 #resetButton {
   margin-top: 75px;
   background-color: white;
   color: black;
+}
+
+.hidden {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.hidden input {
+  width: 120px;
+}
+
+.show {
+  display: block;
+  width: 130px;
 }

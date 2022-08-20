@@ -12,7 +12,7 @@
 
     <div class="dropdown">
       <button id="dropbox">Set Center Image</button>
-      <div id="dropdown-content">
+      <div id="imageDropdown" class="dropdown-content">
         <button id="rei">Spinning Rei</button>
         <button id="skeleton">Dancing Skeleton</button>
         <button id="frog">Spinning Frog</button>
@@ -23,24 +23,28 @@
 
     <div id="addCategoryDropbox">
       <button id="addCategory">Add a Category</button>
-      <input id="addCategoryInput" placeholder="input name here" />
+      <div id="addCategoryDropdown" class="hidden">
+        <input id="addCategoryInput" placeholder="input name here" />
+      </div>
     </div>
     <div id="removeCategoryDropbox">
       <button id="removeCategory">Remove Category</button>
-      <input id="removeCategoryInput" placeholder="input name here" />
+      <div id="removeCategoryDropdown" class="hidden">
+        <input id="removeCategoryInput" placeholder="input name here" />
+      </div>
     </div>
 
     <div id="addLinkDropbox">
-      <button id="addLink">Add a Link</button>
-      <div class="addLinkInputs">
+      <button id="addLinkButton">Add a Link</button>
+      <div id="addLinkDropdown" class="hidden">
         <input id="addLinkName" placeholder="input name here" />
         <input id="addLinkCategory" placeholder="input category here" />
         <input id="addLinkLink" placeholder="input link here" />
       </div>
     </div>
     <div id="removeLinkDropbox">
-      <button id="removeLink">Remove Link</button>
-      <div class="removeLinkInputs">
+      <button id="removeLinkButton">Remove Link</button>
+      <div id="removeLinkDropdown" class="hidden">
         <input id="removeLinkName" placeholder="input name here" />
         <input id="removeLinkCategory" placeholder="input category here" />
       </div>
