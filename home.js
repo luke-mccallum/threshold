@@ -2,18 +2,34 @@
 
 // Loading synced settings
 window.onload = function () {
-  chrome.storage.sync.get(["colorMode", "centerImage"], function (response) {
-    // Loading theme
-    if (response.colorMode != undefined) {
-      console.log("Successfully loaded " + response.colorMode);
-      document.body.className = response.colorMode;
+  chrome.storage.sync.get(
+    ["colorMode", "centerImage", "linkData"],
+    function (response) {
+      // Loading theme
+      if (response.colorMode != undefined) {
+        console.log("Successfully loaded " + response.colorMode);
+        document.body.className = response.colorMode;
+      }
+      // Loading center image
+      if (
+        response.centerImage != undefined &&
+        response.centerImage != "custom"
+      ) {
+        console.log("Successfully loaded " + response.centerImage);
+        document.getElementById("mainImage").src = response.centerImage;
+      }
+      // Loading links
+      if (response.linkData != undefined) {
+        console.log("Successfully loaded saved link data");
+        document
+          .getElementById("categories")
+          .replaceChildren(parse(response.linkData));
+      } else if (response.linkData === undefined) {
+        console.log("Successfully loaded default link data");
+        loadDefaultLinks();
+      }
     }
-    // Loading center image
-    if ((response.centerImage != undefined) && (response.centerImage !="custom")) {
-      console.log("Successfully loaded " + response.centerImage);
-      document.getElementById("mainImage").src = response.centerImage;
-    }
-  });
+  );
 };
 
 // Live updating settings
@@ -32,9 +48,14 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
       } else {
         document.getElementById("mainImage").src = newValue;
       }
-    } else if ((key === "addCategory") && (newValue === "yes")) {
-      newCategory();
-      chrome.storage.sync.set({ addCategory: "no"});
+    } else if (key === "linkData") {
+      if (newValue != undefined) {
+        document.getElementById("categories").replaceChildren(parse(newValue));
+      } else {
+        loadDefaultLinks();
+      }
+    } else if (key === "addCategory") {
+      addCategory(newValue);
     }
   }
 });
@@ -58,10 +79,14 @@ function startTime() {
   setTimeout(startTime, 1000);
 }
 
-// Adding a new category
-function newCategory() {
-  let name = prompt("Enter the name for the new category:");
+// Parsing saved HTML data
+function parse(htmlData) {
+  let parser = new DOMParser();
+  return parser.parseFromString(htmlData, "text/html").body;
+}
 
+// Creating a category
+function createCategory(name) {
   let category = document.createElement("figure");
   category.setAttribute("id", name);
 
@@ -72,25 +97,102 @@ function newCategory() {
   let list = document.createElement("ul");
   list.setAttribute("id", name + "List");
   category.appendChild(list);
-  document.getElementById("leftbar").appendChild(category);
+  return category;
 }
 
-// Removing a category
-function removeCategory(name) {
-  document.getElementById(name).remove();
-}
-
-// Adding a new link
-function newLink(name, link, category) {
+// Creating a link
+function createLink(name, link) {
   let listElement = document.createElement("li");
   let linkElement = document.createElement("a");
   linkElement.href = link;
   linkElement.innerHTML = name;
   listElement.appendChild(linkElement);
-  document.getElementById(category + "List").appendChild(listElement);
+  return listElement;
 }
 
-// Removing a link
-function removeLink(name) {
-  document.getElementById(name + "Link").remove();
+// Adding a category to the stored values
+function addCategory(name) {
+  chrome.storage.sync.get(["linkData"], function (response) {
+    let categories = parse(response.linkData);
+    categories.appendChild(createCategory(name));
+    chrome.storage.sync.set({ linkData: categories.outerHTML });
+  });
+}
+
+// Loading default links
+function loadDefaultLinks() {
+  // Initialising social category
+  let social = createCategory("social");
+  social.childNodes[1].appendChild(
+    createLink("linkedin", "https://www.linkedin.com/feed/")
+  );
+  social.childNodes[1].appendChild(
+    createLink("twitter", "https://twitter.com/home")
+  );
+  social.childNodes[1].appendChild(
+    createLink("facebook", "https://www.facebook.com/")
+  );
+  social.childNodes[1].appendChild(
+    createLink("pinterest", "https://www.pinterest.nz/")
+  );
+  social.childNodes[1].appendChild(
+    createLink("reddit", "https://www.reddit.com/")
+  );
+  social.childNodes[1].appendChild(
+    createLink("anilist", "https://anilist.co/home")
+  );
+  social.childNodes[1].appendChild(
+    createLink("letterboxd", "https://letterboxd.com/")
+  );
+  social.childNodes[1].appendChild(
+    createLink("last.fm", "https://www.last.fm/home")
+  );
+  // Initialising streaming category
+  let streaming = createCategory("streaming");
+  streaming.childNodes[1].appendChild(
+    createLink("youtube", "https://www.youtube.com/")
+  );
+  streaming.childNodes[1].appendChild(
+    createLink(
+      "twitch",
+      "https://www.twitch.tv/directory/all?sort=VIEWER_COUNT"
+    )
+  );
+  streaming.childNodes[1].appendChild(
+    createLink("netflix", "https://www.netflix.com/browse")
+  );
+  streaming.childNodes[1].appendChild(
+    createLink("disney plus", "https://www.disneyplus.com/home")
+  );
+  // Initialisng vidya category
+  let vidya = createCategory("vidya");
+  vidya.childNodes[1].appendChild(
+    createLink("steam", "https://store.steampowered.com/")
+  );
+  vidya.childNodes[1].appendChild(
+    createLink("steamdb", "https://steamdb.info/")
+  );
+  vidya.childNodes[1].appendChild(
+    createLink("humble bundle", "https://www.humblebundle.com/")
+  );
+  // Initialising coding category
+  let coding = createCategory("coding");
+  coding.childNodes[1].appendChild(createLink("github", "https://github.com/"));
+  coding.childNodes[1].appendChild(
+    createLink("leetcode", "https://leetcode.com/")
+  );
+  coding.childNodes[1].appendChild(
+    createLink("stackoverflow", "https://stackoverflow.com/")
+  );
+  coding.childNodes[1].appendChild(
+    createLink("w3schools", "https://www.w3schools.com/")
+  );
+  // Combining into one div
+  let newContents = document.createElement("div")
+  newContents.appendChild(social);
+  newContents.appendChild(streaming);
+  newContents.appendChild(vidya);
+  newContents.appendChild(coding);
+  // Importing into chrome storage
+  chrome.storage.sync.set({ linkData: newContents.outerHTML });
 }
